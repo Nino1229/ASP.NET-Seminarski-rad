@@ -4,6 +4,7 @@ using ASP.NET_Seminarski_rad.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Seminarski_rad.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231029153111_ProductAndCategory")]
+    partial class ProductAndCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,67 +119,6 @@ namespace ASP.NET_Seminarski_rad.Data.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("Discount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("UserDataId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserDataId");
-
-                    b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.OrderItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(9,2)");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(9,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderItem");
-                });
-
             modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -230,58 +171,6 @@ namespace ASP.NET_Seminarski_rad.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductCategory");
-                });
-
-            modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.UserData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserData");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -421,24 +310,6 @@ namespace ASP.NET_Seminarski_rad.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.Order", b =>
-                {
-                    b.HasOne("ASP.NET_Seminarski_rad.Models.UserData", "UserData")
-                        .WithMany()
-                        .HasForeignKey("UserDataId");
-
-                    b.Navigation("UserData");
-                });
-
-            modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.OrderItem", b =>
-                {
-                    b.HasOne("ASP.NET_Seminarski_rad.Models.Order", null)
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.ProductCategory", b =>
                 {
                     b.HasOne("ASP.NET_Seminarski_rad.Models.Category", null)
@@ -508,11 +379,6 @@ namespace ASP.NET_Seminarski_rad.Data.Migrations
             modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.Category", b =>
                 {
                     b.Navigation("ProductCategories");
-                });
-
-            modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.Order", b =>
-                {
-                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("ASP.NET_Seminarski_rad.Models.Product", b =>
