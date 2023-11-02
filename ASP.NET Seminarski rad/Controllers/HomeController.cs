@@ -1,4 +1,5 @@
 ﻿using ASP.NET_Seminarski_rad.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

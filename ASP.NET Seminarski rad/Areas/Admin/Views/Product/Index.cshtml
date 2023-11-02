@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Product>
+
+    <h1>Proizvodi</h1>
+
+    <p>
+    <a asp-action="Create">Kreiraj novi proizvod</a>
+    </p>
+
+    <table class="Table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id=@item.Id>Uredi</a> |
+                    <a asp-action="Details" asp-route-id=@item.Id>Detalji</a> |
+                    <a asp-action="Delete" asp-route-id=@item.Id>Obriši</a> |
+                    <a asp-controller="ProductCategory" asp-action="Index" asp-route-productId=@item.Id>Uredi kategoriju proizvoda</a>
+                    </td>
+                </tr>            
+            }
+        </tbody>
+    </table>

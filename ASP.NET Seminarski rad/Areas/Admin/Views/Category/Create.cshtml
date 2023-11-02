@@ -1,0 +1,30 @@
+﻿@model ASP.NET_Seminarski_rad.Models.Category
+
+<h1>Kreiraj novu kategoriju proizvoda</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryTitle" class="control-label"></label>
+                <input asp-for="CategoryTitle" class="form-control"/>
+                <span asp-validation-for="CategoryTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Vrati se na popis kategorija</a>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

@@ -20,6 +20,13 @@ namespace ASP.NET_Seminarski_rad.Data
         public DbSet<OrderItem> OrderItem { get; set; }
         public DbSet<UserData> UserData { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<IdentityRole>()
+                .HasData(new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN" });
+        }
     }
 
     public class ApplicationUser : IdentityUser

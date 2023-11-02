@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ProductCategory>
+
+    <h1>Kategorije proizvoda</h1>
+    <p>
+    <a asp-action="Create" asp-route-productId=@ViewBag.ProductId>Dodaj novu kategoriju proizvodu</a>
+    </p>
+
+    <hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.ProductTitle</td>
+                <td>@item.CategoryTitle</td>
+                <td>
+                    <a asp-action="Edit"
+                   asp-route-id="@item.Id"
+                   asp-route-productId="@item.ProductId">
+                        Edit
+                    </a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<a asp-controller="Product" asp-action="Index">Back to products</a>
