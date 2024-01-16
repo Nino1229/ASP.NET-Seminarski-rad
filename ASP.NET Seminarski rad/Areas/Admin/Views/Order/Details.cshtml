@@ -1,0 +1,30 @@
+﻿@model Order
+
+<h1>Detalji narudžbe</h1>
+
+<partial name="_OrderItemsPartial" for="@Model.OrderItems" />
+
+<h3>Podaci kupca</h3>
+
+<div class="row">
+    <dl class="col-sm-2">@Html.DisplayNameFor(model => model.BillingFirstName)</dl>
+    <dl class="col-sm-10">@Html.DisplayFor(model => model.BillingFirstName)</dl>
+
+    <dl class="col-sm-2">@Html.DisplayNameFor(model => model.BillingLastName)</dl>
+    <dl class="col-sm-10">@Html.DisplayFor(model => model.BillingLastName)</dl>
+
+    <dl class="col-sm-2">@Html.DisplayNameFor(model => model.BillingPhoneNumber)</dl>
+    <dl class="col-sm-10">@Html.DisplayFor(model => model.BillingPhoneNumber)</dl>
+
+    <dl class="col-sm-2">@Html.DisplayNameFor(model => model.BillingAddress)</dl>
+    <dl class="col-sm-10">@Html.DisplayFor(model => model.BillingAddress)</dl>
+
+    <dl class="col-sm-2">@Html.DisplayNameFor(model => model.BillingCity)</dl>
+    <dl class="col-sm-10">@Html.DisplayFor(model => model.BillingCity)</dl>
+
+    <dl class="col-sm-2">@Html.DisplayNameFor(model => model.BillingCountry)</dl>
+    <dl class="col-sm-10">@Html.DisplayFor(model => model.BillingCountry)</dl>
+
+    <dl class="col-sm-2">@Html.DisplayNameFor(model => model.BillingZipCode)</dl>
+    <dl class="col-sm-10">@Html.DisplayFor(model => model.BillingZipCode)</dl>
+</div>

@@ -1,0 +1,30 @@
+﻿@model List<UserRolesViewModel>
+
+    <h1>Uloge korisnika</h1>
+
+    <table>
+        <thead>
+            <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>@string.Join(" , ", user.Roles.ToList())</td>
+                <td>
+                    <a class="btn btn-primary"
+                       asp-controller="UserManager"
+                       asp-action="Manage"
+                       asp-route-userId="@user.UserId">Uredi ulogu</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>

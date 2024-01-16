@@ -8,6 +8,7 @@ namespace ASP.NET_Seminarski_rad.Models
         public int Id { get; set; }
         public int OrderId { get; set; }
         public int ProductId { get; set; }
+
         [Column(TypeName = "decimal(9,2)")]
         public decimal Quantity { get; set; }
         [Column(TypeName = "decimal(9,2)")]
@@ -15,5 +16,6 @@ namespace ASP.NET_Seminarski_rad.Models
 
         [NotMapped]
         public string? ProductTitle { get; set; }
+
     }
 }

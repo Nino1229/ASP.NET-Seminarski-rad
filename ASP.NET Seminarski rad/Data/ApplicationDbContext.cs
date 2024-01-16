@@ -18,7 +18,6 @@ namespace ASP.NET_Seminarski_rad.Data
         public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderItem> OrderItem { get; set; }
-        public DbSet<UserData> UserData { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

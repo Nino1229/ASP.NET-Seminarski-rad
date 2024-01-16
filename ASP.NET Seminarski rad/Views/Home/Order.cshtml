@@ -1,0 +1,121 @@
+﻿@model List<ASP.NET_Seminarski_rad.Models.CartItem>
+
+<div class="text-center">
+    <h1 class="display-4">Podnesi narudžbu</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Proizvod</th>
+                        <th>Cijena</th>
+                        <th>Količina</th>
+                        <th>Ukupno</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="btn btn-sm btn-danger"
+                               asp-controller="Cart"
+                               asp-action="RemoveFromCart"
+                               asp-route-productId="@item.Product.Id">Ukloni</a>
+                            </td>
+                            <td>@item.Product.ProductTitle</td>
+                            <td>@item.Product.ProductPrice.ToString("0.00")</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.GetTotal().ToString("0.00")</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <b>
+                                Ukupni iznos: @ViewBag.TotalPrice.ToString("0.00")
+                            </b>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                <h5>Podaci za naplatu</h5>
+
+                @if (ViewBag.Errors.Count > 0)
+                {
+                    <div class="alert alert-danger text-center">
+                        @foreach(var error in ViewBag.Errors)
+                        {
+                            <p>@error</p>
+                        }
+                    </div>
+
+                }
+                <form method="post" asp-controller="Home" asp-action="CreateOrder">
+                    <input type="hidden" name="Total" value="@ViewBag.TotalPrice" />
+                    <div class="row">
+                        <div class="text-start form-group col-md-6">
+                            <label class="text-start" for="BillingFirstName">Ime *</label>
+                            <input type="text" name="BillingFirstName" class="form-control" />
+                        </div>
+                        <div class="text-start  form-group col-md-6">
+                            <label for="BillingLastName">Prezime *</label>
+                            <input type="text" name="BillingLastName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-start form-group col-md-6">
+                            <label for="BillingPhoneNumber">Broj telefona *</label>
+                            <input type="text" name="BillingPhoneNumber" class="form-control" />
+                        </div>
+                        <div class="text-start form-group">
+                            <label for="BillingAddress">Adresa *</label>
+                            <input type="text" name="BillingAddress" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-start  form-group col-md-6">
+                            <label for="BillingCity">Grad *</label>
+                            <input type="text" name="BillingCity" class="form-control" />
+                        </div>
+                        <div class="text-start form-group col-md-4">
+                            <label for="BillingCountry">Država *</label>
+                            <select class="form-control" name="BillingCountry">
+                                <option value="Croatia">Hrvatska</option>
+                                <option value="Slovenia">Slovenija</option>
+                                <option value="Serbia">Srbija</option>
+                                <option value="Bosnia and Herzegovina">Bosna i Hercegovina</option>
+                                <option value="Hungary">Mađarska</option>
+                            </select>
+                        </div>
+                        <div class="text-start form-group col-md-2">
+                            <label for="BillingZipCode">Poštanski broj *</label>
+                            <input type="text" class="form-control" name="BillingZipCode" />
+                        </div>
+                        <div class="text-start form-group">
+                            <label for="Message">Napomene</label>
+                            <textarea class="form-control" name="Message" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-lg btn-success float-lg-start mt-5" value="Naruči" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

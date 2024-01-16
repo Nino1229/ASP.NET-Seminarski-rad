@@ -29,7 +29,7 @@ namespace ASP.NET_Seminarski_rad.Models
         public string? ProductImage { get; set; }
 
         [NotMapped]
-        public IFormFile ProductImageFile { get; set; }
+        public IFormFile? ProductImageFile { get; set; }
 
         public List<ProductCategory>? ProductCategories { get; set; }
     }

@@ -33,15 +33,16 @@
                 <input asp-for="ProductImageFile" type="file" class="form-control" />
                 <span asp-validation-for="ProductImageFile" class="text-danger"></span>
             </div>
+            <p>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Kreiraj" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
-
+<hr />
 <div>
-    <a asp-action="Index">Vrati se na popis proizvoda</a>
+    <a asp-action="Index" class="btn btn-primary">Vrati se na popis proizvoda</a>
 </div>
 
 @section Scripts{

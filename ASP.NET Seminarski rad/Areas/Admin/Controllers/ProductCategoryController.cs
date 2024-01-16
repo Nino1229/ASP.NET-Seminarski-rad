@@ -61,6 +61,7 @@ namespace ASP.NET_Seminarski_rad.Areas.Admin.Controllers
             return View(productCategory);
         }
 
+        [HttpGet]
         public IActionResult Create(int productId)
         {
             ViewBag.ProductId = productId;
@@ -74,6 +75,18 @@ namespace ASP.NET_Seminarski_rad.Areas.Admin.Controllers
                     Text = c.CategoryTitle,
                 }).ToList();
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(ProductCategory productCategory)
+        {
+            if(ModelState.IsValid)
+            {
+                _dbContext.ProductCategory.Add(productCategory);
+                _dbContext.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index), new { productId = productCategory.ProductId });
         }
 
         [HttpGet]

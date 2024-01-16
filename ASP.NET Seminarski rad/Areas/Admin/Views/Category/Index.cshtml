@@ -3,7 +3,7 @@
 <h1>Kategorije proizvoda</h1>
 
 <p>
-    <a asp-action="Create">Kreiraj novu kategoriju proizvoda</a>
+    <a asp-action="Create" class="btn btn-success">Kreiraj novu kategoriju proizvoda</a>
 </p>
 
 <table class="table">
@@ -26,9 +26,9 @@
                     @Html.DisplayFor(modelItem => item.CategoryTitle)
                 </td>
                 <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Uredi</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Detalji</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Obriši</a>
                 </td>               
             </tr>
         }

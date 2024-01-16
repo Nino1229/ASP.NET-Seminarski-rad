@@ -30,6 +30,8 @@ namespace ASP.NET_Seminarski_rad
                 options.Password.RequiredUniqueChars = 0;
             });
 
+            builder.Services.AddSession();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -58,6 +60,8 @@ namespace ASP.NET_Seminarski_rad
 
                 ApplicationUserDbInitializer.SeedUsers(userManager);
             }
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

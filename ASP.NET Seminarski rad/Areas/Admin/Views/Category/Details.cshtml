@@ -3,6 +3,7 @@
 <h1>Detalji kategorije</h1>
 
 <hr />
+
 <div>
     <dl class="row">
         <dt class="col-sm-2">
@@ -21,6 +22,12 @@
 </div>
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Uredi</a> |
-    <a asp-action="Index">Vrati se na popis kategorija</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Uredi</a>  
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Obriši</a>
+</div>
+
+<hr />
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Vrati se na popis kategorija</a>
 </div>

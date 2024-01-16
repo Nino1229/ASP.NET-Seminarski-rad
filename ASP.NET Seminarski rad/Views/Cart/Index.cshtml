@@ -1,0 +1,62 @@
+﻿@model List<ASP.NET_Seminarski_rad.Models.CartItem>
+
+@if (Model.Count == 0)
+{
+        <div class="text-center">
+            <h1 class="display-4">Vaša košarica je prazna!</h1>
+            <hr />
+            <a asp-controller="Home" asp-action="Product" class="btn btn-primary">Vrati se na popis proizvoda i napuni košaricu</a>
+        </div>
+}
+
+else if (Model.Count > 0)
+{
+    <div class="text-center">
+        <h1 class="display-4">Proizvodi u košarici</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Proizvod</th>
+                <th>Cijena</th>
+                <th>Količina</th>
+                <th>Ukupno</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a class="btn btn-sm btn-danger"
+                   asp-action="RemoveFromCart"
+                   asp-route-productId="@item.Product.Id">Ukloni</a>
+                    </td>
+                    <td>@item.Product.ProductTitle</td>
+                    <td>@item.Product.ProductPrice</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.GetTotal()</td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <b>
+                        Ukupan iznos narudžbe: @ViewBag.TotalPrice
+                    </b>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+<a class="btn btn-primary btn-lg float-lg-start" asp-controller="Home" asp-action="Product">Nastavi kupovinu 
+
+</a>
+
+<a class="btn btn-success btn-lg float-lg-end" asp-controller="Home" asp-action="Order">Naruči proizvode</a>

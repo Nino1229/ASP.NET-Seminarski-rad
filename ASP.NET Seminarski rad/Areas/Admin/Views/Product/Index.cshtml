@@ -3,54 +3,53 @@
     <h1>Proizvodi</h1>
 
     <p>
-    <a asp-action="Create">Kreiraj novi proizvod</a>
+    <a asp-action="Create" class="btn btn-success">Kreiraj novi proizvod</a>
     </p>
 
     <table class="Table">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-            <th>
+            <th class="col-sm-1">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th class="col-sm-1">
                 @Html.DisplayNameFor(model => model.ProductTitle)
             </th>
-            <th>
+            <th class="col-sm-3">
                 @Html.DisplayNameFor(model => model.ProductDescription)
             </th>
-            <th>
+            <th class="col-sm-1">
                 @Html.DisplayNameFor(model => model.ProductQuantity)
             </th>
-            <th>
+            <th class="col-sm-1">
                 @Html.DisplayNameFor(model => model.ProductPrice)
             </th>
-            <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
+                <td class="col-sm-1">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="col-sm-1">
+                    @Html.DisplayFor(modelItem => item.ProductTitle)
+                </td>
+                <td class="col-sm-3">
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td class="col-sm-1">
+                    @Html.DisplayFor(modelItem => item.ProductQuantity)
+                </td>
+                <td class="col-sm-1">
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductQuantity)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductPrice)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id=@item.Id>Uredi</a> |
-                    <a asp-action="Details" asp-route-id=@item.Id>Detalji</a> |
-                    <a asp-action="Delete" asp-route-id=@item.Id>Obriši</a> |
-                    <a asp-controller="ProductCategory" asp-action="Index" asp-route-productId=@item.Id>Uredi kategoriju proizvoda</a>
+                    <a asp-action="Edit" asp-route-id=@item.Id class="btn btn-primary">Uredi</a> |
+                    <a asp-action="Details" asp-route-id=@item.Id class="btn btn-primary">Detalji</a> |
+                    <a asp-controller="ProductCategory" asp-action="Index" asp-route-productId=@item.Id class="btn btn-primary">Dodaj/Uredi kategoriju proizvoda</a> |
+                    <a asp-action="Delete" asp-route-id=@item.Id class="btn btn-danger">Obriši</a> 
                     </td>
                 </tr>            
             }

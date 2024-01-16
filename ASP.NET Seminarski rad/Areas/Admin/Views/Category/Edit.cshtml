@@ -14,15 +14,18 @@
                 <input asp-for="CategoryTitle" class="form-control" />
                 <span asp-validation-for="CategoryTitle" class="text-danger"></span>
             </div>
+            <p>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Spremi" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+<hr>
+
 <div>
-    <a asp-action="Index">Vrati se na popis kategorija</a>
+    <a asp-action="Index" class="btn btn-primary">Vrati se na popis kategorija</a>
 </div>
 
 @section Scripts{
